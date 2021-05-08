@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:novel_covid_19/const.dart';
 
 class Home extends StatelessWidget {
@@ -12,23 +13,14 @@ class Home extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.fromLTRB(27, 45, 25, 0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   customUnderlineText('COVID-19', black, 25,
                       fontWeight: FontWeight.bold),
                   Spacer(),
-                  CircleAvatar(
-                    radius: 20,
-                    child: CachedNetworkImage(
-                      imageUrl: covid1,
-                      height: 0.1.sh,
-                      // width: 1.sw,
-                      placeholder: (context, url) =>
-                          Center(child: CupertinoActivityIndicator()),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
-                  )
+                  SvgPicture.asset("assets/covidIcon.svg")
                 ],
               ),
               SizedBox(
@@ -223,6 +215,23 @@ class Home extends StatelessWidget {
                 ),
               ),
               Divider(),
+              SizedBox(
+                height: 20,
+              ),
+              customText('Corona virus hit our states map view', black, 25,
+                  fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 15,
+              ),
+              CachedNetworkImage(
+                imageUrl:
+                    'https://c.files.bbci.co.uk/66DA/production/_114403362_indiac19.jpg',
+                height: 0.5.sh,
+                width: 1.sw,
+                placeholder: (context, url) =>
+                    Center(child: CupertinoActivityIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ],
           ),
         ),
